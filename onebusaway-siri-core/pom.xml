@@ -6,7 +6,7 @@
     <groupId>org.onebusaway</groupId>
     <version>1.0.7-SNAPSHOT</version>
   </parent>
-  <artifactId>onebusaway-siri-core</artifactId>
+  <artifactId>onebusaway-siri-core-shiplog</artifactId>
   <name>onebusaway-siri-core</name>
   <description>Common core classes</description>
 

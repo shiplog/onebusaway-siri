@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-Build</actionName>
+            <displayName>Build</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>-Dlicense.skip=true</goal>
+                <goal>-DskipTests</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-Package</actionName>
+            <displayName>Package</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+                <goal>-Dlicense.skip=true</goal>
+                <goal>-DskipTests</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-Generate Sources</actionName>
+            <displayName>Generate Sources</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>generate-sources</goal>
+                <goal>install</goal>
+                <goal>-Dlicense.skip=true</goal>
+                <goal>-DskipTests</goal>
+            </goals>
+        </action>
+    </actions>

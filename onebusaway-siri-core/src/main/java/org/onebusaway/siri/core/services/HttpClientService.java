@@ -38,6 +38,5 @@ public interface HttpClientService {
    * @return the response
    * @throws SiriConnectionException
    */
-  public HttpResponse executeHttpMethod(HttpClient client,
-      HttpUriRequest request) throws SiriConnectionException;
+  public HttpResponse executeHttpMethod(HttpClient client, HttpUriRequest request) throws SiriConnectionException;
 }

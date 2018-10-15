@@ -5,7 +5,7 @@
     <groupId>org.onebusaway</groupId>
     <version>1.0.7-SNAPSHOT</version>
   </parent>
-  <artifactId>onebusaway-siri-jetty</artifactId>
+  <artifactId>onebusaway-siri-jetty-shiplog</artifactId>
 
   <name>onebusaway-siri-jetty</name>
   <description>Extension of siri core that uses an embedded Jetty instance for all listening HTTP server functionality</description>
@@ -13,7 +13,7 @@
   <dependencies>
     <dependency>
       <groupId>org.onebusaway</groupId>
-      <artifactId>onebusaway-siri-core</artifactId>
+      <artifactId>onebusaway-siri-core-shiplog</artifactId>
       <version>${project.version}</version>
     </dependency>
 
@@ -37,6 +37,7 @@
   </dependencies>
 
   <build>
+      
     <finalName>onebusaway-siri-jetty</finalName>
   </build>
 </project>

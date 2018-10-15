@@ -49,7 +49,8 @@ class SubscriptionServerServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    
+    resp.setContentType("text/xml; charset=iso-8859-1");
+    resp.setCharacterEncoding("iso-8859-1");
     _log.debug("path: {}", req.getRequestURI());
 
     BufferedReader reader = req.getReader();
