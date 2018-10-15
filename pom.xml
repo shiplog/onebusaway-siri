@@ -16,44 +16,44 @@
   <properties>
     <onebusaway_siri_api_v10_version>1.0.1</onebusaway_siri_api_v10_version>
     <onebusaway_siri_api_v13_version>1.0.2-SNAPSHOT</onebusaway_siri_api_v13_version>
-    <!-- We don't want to release these to the main Maven repo, so we deploy to the OBA repo by default -->
-    <distribution_id>nexus.onebusaway.org-releases</distribution_id>
-    <distribution_url>http://nexus.onebusaway.org/content/repositories/releases/</distribution_url>
-    <snapshot_distribution_id>nexus.onebusaway.org-snapshots</snapshot_distribution_id>
-    <snapshot_distribution_url>http://nexus.onebusaway.org/content/repositories/snapshots/</snapshot_distribution_url>
     <!--  These properties are primarily used in configuring integration tests -->
     <org_onebusaway_test_port>9900</org_onebusaway_test_port>
   </properties>
+  
+  <distributionManagement>
+      <repository>
+          <id>shiplog</id>
+          <name>Shiplog Artifactory</name>
+          <url>https://shiplog.jfrog.io/shiplog/libs-release-local</url>
+      </repository>
+
+      <snapshotRepository>
+          <id>shiplog</id>
+          <name>Shiplog Artifactory</name>
+          <url>https://shiplog.jfrog.io/shiplog/libs-snapshot-local</url>
+      </snapshotRepository>
+  </distributionManagement>
 
   <repositories>
-    <repository>
-      <id>public.onebusaway.org</id>
-      <url>http://nexus.onebusaway.org/content/groups/public/</url>
-    </repository>
+      <repository>
+          <id>central</id>
+          <name>Maven Central</name>
+          <layout>default</layout>
+          <url>http://repo1.maven.org/maven2</url>
+      </repository>
+      <repository>
+          <id>shiplog</id>
+          <name>Shiplog Artifactory</name>
+          <url>https://shiplog.jfrog.io/shiplog/libs-common</url>
+      </repository>
   </repositories>
 
   <scm>
-    <connection>scm:git:http://github.com/OneBusAway/onebusaway-siri.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/OneBusAway/onebusaway-siri.git</developerConnection>
-    <url>http://github.com/OneBusAway/onebusaway-siri</url>
+      <connection>scm:git:https://github.com/shiplog/onebusaway-siri.git</connection>
+      <developerConnection>scm:git:https://github.com/shiplog/onebusaway-siri.git</developerConnection>
+      <url>https://github.com/shiplog/onebusaway-siri</url>
+      <tag>HEAD</tag>
   </scm>
-
-  <issueManagement>
-    <system>GitHub</system>
-    <url>https://github.com/OneBusAway/onebusaway-siri/issues</url>
-  </issueManagement>
-
-  <distributionManagement>
-    <site>
-      <id>${site_id}</id>
-      <url>${site_deployment_base}/onebusaway-siri/${project.version}</url>
-    </site>
-  </distributionManagement>
-
-  <modules>
-    <module>onebusaway-siri-core</module>
-    <module>onebusaway-siri-jetty</module>
-  </modules>
 
   <!-- This is where we control the master dependency version used by all modules -->
   <dependencyManagement>
