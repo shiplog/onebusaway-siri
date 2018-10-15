@@ -1,12 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>onebusaway</artifactId>
-    <groupId>org.onebusaway</groupId>
-    <version>1.1.8</version>
-  </parent>
+
   <artifactId>onebusaway-siri</artifactId>
-  <version>1.0.7-shiplog</version>
+  <groupId>no.shiplog</groupId>
+  <version>1.0.7-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>onebusaway-siri</name>
@@ -45,6 +42,10 @@
           <id>shiplog</id>
           <name>Shiplog Artifactory</name>
           <url>https://shiplog.jfrog.io/shiplog/libs-common</url>
+      </repository>
+      <repository>
+          <id>public.onebusaway.org</id>
+          <url>http://nexus.onebusaway.org/content/groups/public/</url>
       </repository>
   </repositories>
 

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>onebusaway-siri</artifactId>
-    <groupId>org.onebusaway</groupId>
+    <groupId>no.shiplog</groupId>
     <version>1.0.7-SNAPSHOT</version>
   </parent>
   <artifactId>onebusaway-siri-core-shiplog</artifactId>
