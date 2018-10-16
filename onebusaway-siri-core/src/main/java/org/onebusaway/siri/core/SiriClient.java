@@ -107,7 +107,7 @@ public class SiriClient extends SiriCommon implements SiriClientHandler,
       5 * 60 * 1000);
 
   public SiriClient() {
-    setUrl("http://*:8080/client.xml");
+    setUrl("http://*:888/client.xml");
   }
 
   @Inject
