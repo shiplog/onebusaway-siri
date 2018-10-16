@@ -64,8 +64,8 @@ import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
@@ -122,7 +122,7 @@ public class SiriCommon implements SiriRawHandler, StatusProviderService {
      */
     protected HttpClientService _httpClientService;
 
-    private DefaultHttpClient _client;
+    private CloseableHttpClient _client;
 
     private String _identity;
 
@@ -346,38 +346,18 @@ public class SiriCommon implements SiriRawHandler, StatusProviderService {
         if (_localAddress != null) {
             params.setParameter(ConnRoutePNames.LOCAL_ADDRESS, _localAddress);
         }
-
-        /**
-         * Set the timeout for both connections to a socket and for reading from
-         * a socket.
-         */
-        if (_connectionTimeout != 0) {
-            HttpConnectionParams.setConnectionTimeout(params, _connectionTimeout * 1000);
-            HttpConnectionParams.setSoTimeout(params, _connectionTimeout * 1000);
-        }
-
-        /**
-         * We want to allow a fair-amount of concurrent connections. TODO: Can
-         * we auto-tune this somehow?
-         */
-        ConnManagerParams.setMaxTotalConnections(params, 50);
-
-        /**
-         * We want to create a connection manager that can pool multiple
-         * connections.
-         */
-        SchemeRegistry schemeRegistry = new SchemeRegistry();
-        schemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-        schemeRegistry.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
-        ClientConnectionManager connectionManager = new ThreadSafeClientConnManager(params, schemeRegistry);
         
         params.setParameter("http.protocol.content-charset", "utf-8");
-        _client = new DefaultHttpClient(connectionManager, params);
+        _client = HttpClientBuilder.create().build();
     }
 
     @PreDestroy
     public void stop() {
-        _client.getConnectionManager().shutdown();
+      try {
+        _client.close();
+      } catch (Exception e) {
+        _log.error("unable to close http client", e);
+      }
     }
 
     /**
