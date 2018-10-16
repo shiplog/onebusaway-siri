@@ -371,7 +371,7 @@ public class SiriCommon implements SiriRawHandler, StatusProviderService {
         schemeRegistry.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
         ClientConnectionManager connectionManager = new ThreadSafeClientConnManager(params, schemeRegistry);
         
-        params.setParameter("http.protocol.content-charset", "utf-8");
+        params.setParameter("http.protocol.content-charset", "ISO-8859-1");
         _client = new DefaultHttpClient(connectionManager, params);
     }
 
@@ -905,7 +905,7 @@ public class SiriCommon implements SiriRawHandler, StatusProviderService {
     public void marshall(Object object, Writer writer, boolean formatOutput) {
         try {
             Marshaller m = _jaxbContext.createMarshaller();
-            m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+            m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
             if (formatOutput) {
                 m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             }
@@ -1077,9 +1077,9 @@ public class SiriCommon implements SiriRawHandler, StatusProviderService {
         
         HttpPost post = new HttpPost(url);
         try {
-            StringEntity entity = new StringEntity(new String(content.getBytes("UTF-8")));
-            entity.setContentType("text/xml; charset=utf-8");
-            entity.setContentEncoding("utf-8");
+            StringEntity entity = new StringEntity(new String(content.getBytes("ISO-8859-1")));
+            entity.setContentType("text/xml; charset=ISO-8859-1");
+            entity.setContentEncoding("ISO-8859-1");
             entity.setChunked(true);
             post.setEntity(entity);
 
