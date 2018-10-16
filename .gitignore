@@ -5,6 +5,6 @@ pom.xml.releaseBackup
 .project
 .classpath
 nbactions.xml
-.idea
-*.iml
 .idea/
+*.iml
+**/.idea
